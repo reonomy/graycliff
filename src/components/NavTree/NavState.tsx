@@ -1,14 +1,14 @@
-import { includes, without } from 'lodash';
-import { Container } from 'unstated';
+import { includes, without } from "lodash"
+import { Container } from "unstated"
 
 export interface State {
-  expandedNavItems: string[];
+  expandedNavItems: string[]
 }
 
 export class NavState extends Container<State> {
   state = {
     expandedNavItems: [],
-  };
+  }
 
   constructor() {
     super()
@@ -28,24 +28,24 @@ export class NavState extends Container<State> {
      *
      * import { Location } from '@reach/router` will return it.
      */
-    if (typeof window !== 'undefined') {
-      const expandedNavItems = ['/' + window.location.pathname.split('/')[1]];
+    if (typeof window !== "undefined") {
+      const expandedNavItems = ["/" + window.location.pathname.split("/")[1]]
       this.state = {
         expandedNavItems,
-      };
+      }
     }
   }
 
   toggleNavItem = navItem => {
-    const { expandedNavItems } = this.state;
-    const hasNavItem = includes(expandedNavItems, navItem);
+    const { expandedNavItems } = this.state
+    const hasNavItem = includes(expandedNavItems, navItem)
 
     const updated = hasNavItem
       ? without(expandedNavItems, navItem)
-      : expandedNavItems.concat([navItem]);
+      : expandedNavItems.concat([navItem])
 
     this.setState({
       expandedNavItems: updated,
-    });
+    })
   }
 }
