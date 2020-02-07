@@ -9,6 +9,7 @@ import { LayoutComponents, Theme } from "./Theme";
 export const Boot: React.SFC<{ element: any }> = ({ element }) => {
   return (
     <StateProvider>
+      <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
       <MDXProvider components={LayoutComponents}>
         <Theme>{element}</Theme>
       </MDXProvider>

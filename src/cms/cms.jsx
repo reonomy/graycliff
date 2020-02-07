@@ -14,8 +14,10 @@ const isDevelopment = process.env.NODE_ENV === 'development';
 
 if (isClient) {
   window.CMS_MANUAL_INIT = true;
-  netlifyIdentity.init();
-  netlifyIdentity.open();
+  if (!isDevelopment) {
+    netlifyIdentity.init();
+    netlifyIdentity.open();
+  }
 }
 
 if (isDevelopment) {
