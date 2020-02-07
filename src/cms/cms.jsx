@@ -1,11 +1,9 @@
 import { MdxControl, MdxPreview } from "netlify-cms-widget-mdx"
 import React, { Component, useState } from "react"
-// import { StyleSheetManager } from "styled-components"
-import { LayoutComponents, UIComponents } from "../Theme"
+import { UIComponents } from "../Theme"
 import FileSystemBackend from "netlify-cms-backend-fs"
 import CMS from "netlify-cms-app"
 import netlifyIdentity from "netlify-identity-widget"
-
 import { create } from 'jss';
 import { StylesProvider, jssPreset } from '@material-ui/core/styles';
 
@@ -29,18 +27,10 @@ if (isDevelopment) {
 }
 
 
-// Custom components need refs for validation and thus must be a class.
-// Additionally, after <Theme>, only one child is allowed.
-// See https://github.com/netlify/netlify-cms/issues/1346
-
 class MDXWidget extends Component {
   render() {
     return (
-      // <Theme>
-      <div>
-        <MdxControl {...this.props} />
-      </div>
-      // </Theme>
+      <MdxControl {...this.props} />
     )
   }
 }
@@ -49,30 +39,20 @@ class MDXWidget extends Component {
 // Docs: https://www.netlifycms.org/docs/customization/
 
 const PreviewWindow = props => {
-  // const iframe = document.getElementsByTagName("iframe")[1];
-  // const iframeHead = iframe.contentDocument.head;
-
-  // const styleNode = document.createComment('jss-insertion-point');
-  // iframeHead.insertBefore(styleNode, iframeHead.firstChild);
-
-
 
   const mdxProps = {
-    // This key represents html elements used in markdown; h1, p, etc
-    components: LayoutComponents,
+    // Represents html elements used in markdown; h1, p, etc
+    components: {},
     // Pass components used in the editor (and shared throughout mdx) here:
     scope: UIComponents,
-
     mdPlugins: [],
   }
-
-
 
   const [jss, setJss] = useState(null);
 
   function setRefAndCreateJss(headRef) {
     if (headRef && !jss) {
-      const createdJssWithRef = create({...jssPreset(), insertionPoint: headRef})
+      const createdJssWithRef = create({...jssPreset(), insertionPoint: headRef});
       setJss(createdJssWithRef)
     }
   }
@@ -80,11 +60,11 @@ const PreviewWindow = props => {
   return (
     <div>
       <noscript ref={setRefAndCreateJss} />
-      {jss &&
-      <StylesProvider jss={jss}>
-        <MdxPreview mdx={mdxProps} {...props} />
-      </StylesProvider>
-      }
+      {jss && (
+        <StylesProvider jss={jss}>
+          <MdxPreview mdx={mdxProps} {...props} />
+        </StylesProvider>
+      )}
     </div>
 
   )

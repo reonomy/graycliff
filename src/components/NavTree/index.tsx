@@ -1,9 +1,9 @@
-import { Subscribe } from "unstated"
-import React, { Fragment } from "react"
-import { TreeNode, pathListToTree } from "./utils/pathListToTree"
-import { NavState } from "./NavState"
-import { Link, StaticQuery, graphql } from "gatsby"
-import { includes, reject, sortBy } from "lodash"
+import { Subscribe } from 'unstated';
+import React, { Fragment } from 'react';
+import { TreeNode, pathListToTree } from './utils/pathListToTree';
+import { NavState } from './NavState';
+import { Link, StaticQuery, graphql } from 'gatsby';
+import { includes, reject, sortBy } from 'lodash';
 
 export const NavTree = _props => {
   return (
@@ -27,7 +27,7 @@ export const NavTree = _props => {
         }
       `}
       render={data => {
-        return renderNavTree(buildNavTree(data))
+        return renderNavTree(buildNavTree(data));
       }}
     />
   )
@@ -40,12 +40,12 @@ function renderNavTree(tree: TreeNode[], treeDepth: number = 0) {
       {(navState: NavState) => (
         <div>
           {tree.map(({ data, children, formattedName, path }: TreeNode) => {
-            const hasChildren = Boolean(children.length)
+            const hasChildren = Boolean(children.length);
 
             switch (hasChildren) {
               case true: {
-                treeDepth++
-                const expanded = includes(navState.state.expandedNavItems, path)
+                treeDepth++;
+                const expanded = includes(navState.state.expandedNavItems, path);
 
                 return (
                   <Fragment key={path}>
@@ -53,13 +53,13 @@ function renderNavTree(tree: TreeNode[], treeDepth: number = 0) {
                       Don't navigate, just toggle subnav open and closed
                     */}
                     <NavLink
-                      disableNavigation
+                      disableNavigation={true}
                       to={path}
                       onClick={() => {
-                        navState.toggleNavItem(path)
+                        navState.toggleNavItem(path);
 
                         // Recompute tree since subnav could be open or closed
-                        treeDepth = 0
+                        treeDepth = 0;
                       }}
                     >
                       {formattedName}
@@ -87,7 +87,7 @@ function renderNavTree(tree: TreeNode[], treeDepth: number = 0) {
 function buildNavTree(data) {
 
   const routes = data.allMdx.edges.reduce((acc, { node }) => {
-    const { route } = node.fields
+    const { route } = node.fields;
     if (route.length) {
       return [
         ...acc,
@@ -97,20 +97,20 @@ function buildNavTree(data) {
         },
       ]
     } else {
-      return acc
+      return acc;
     }
   }, [])
 
   // Perform various operations depending on frontmatter
-  const sorted = sortBy(routes, route => route.data.order)
-  const visible = reject(sorted, route => route.data.hideInNav)
-  const navTree = pathListToTree(visible).map(path => path.children)[0]
-  return navTree
+  const sorted = sortBy(routes, route => route.data.order);
+  const visible = reject(sorted, route => route.data.hideInNav);
+  const navTree = pathListToTree(visible).map(path => path.children)[0];
+  return navTree;
 }
 
 const NavLink = ({
   children,
-  disableNavigation,
+  disableNavigation=false,
   to,
   ...props
 }) => {
