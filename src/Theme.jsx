@@ -12,8 +12,8 @@ const theme = createMuiTheme();
 
 export const UIComponents = {
   ...UI,
-  // TODO: include any additional custom components we want here ie:
-  // Janky: props => <TextField {...props} placeholder={'janky'} />
+  // TODO: include any additional custom components we want here, eg:
+  Janky: props => <UI.TextField {...props} placeholder={'janky'} />
 }
 
 export const Theme = ({ children }) => (
