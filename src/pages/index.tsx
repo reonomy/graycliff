@@ -31,7 +31,7 @@ export default function Home() {
                     fields: { route },
                     frontmatter: { title },
                   },
-                } = edge
+                } = edge;
 
                 return (
                   <div key={index}>

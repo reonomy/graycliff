@@ -25,25 +25,25 @@
  */
 
 interface PathListProps {
-  path: string
-  data: object
+  path: string;
+  data: object;
 }
 
 export function pathListToTree(pathList: PathListProps[]): TreeNode[] {
-  const tree: TreeNode[] = []
+  const tree: TreeNode[] = [];
   for (const { path, data } of pathList) {
-    const split: string[] = path.split("/")
-    createNode(split, tree, path, data)
+    const split: string[] = path.split('/');
+    createNode(split, tree, path, data);
   }
-  return tree
+  return tree;
 }
 
 export interface TreeNode {
-  name: string
-  formattedName: string
-  path: string
-  data: any
-  children: TreeNode[]
+  name: string;
+  formattedName: string;
+  path: string;
+  data: any;
+  children: TreeNode[];
 }
 
 function createNode(
@@ -67,9 +67,9 @@ function createNode(
       children: [],
     })
     if (path.length !== 0) {
-      createNode(path, tree[tree.length - 1].children, fullPath, data)
+      createNode(path, tree[tree.length - 1].children, fullPath, data);
     }
   } else {
-    createNode(path, tree[idx].children, fullPath, data)
+    createNode(path, tree[idx].children, fullPath, data);
   }
 }

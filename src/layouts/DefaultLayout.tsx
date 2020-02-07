@@ -1,7 +1,7 @@
-import MDXRenderer from "gatsby-mdx/mdx-renderer"
-import React from "react"
-import { Link, graphql } from "gatsby"
-import { NavTree } from "components/NavTree"
+import MDXRenderer from 'gatsby-mdx/mdx-renderer';
+import React from 'react';
+import { Link, graphql } from 'gatsby';
+import { NavTree } from 'components/NavTree';
 
 export default function DocsLayout(props) {
   const {
@@ -11,7 +11,7 @@ export default function DocsLayout(props) {
         frontmatter: { title },
       },
     },
-  } = props
+  } = props;
 
   return (
     <div>
