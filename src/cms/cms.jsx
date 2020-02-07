@@ -3,7 +3,6 @@ import React, { Component, useState } from 'react';
 import { LayoutComponents, UIComponents } from '../Theme';
 import FileSystemBackend from 'netlify-cms-backend-fs';
 import CMS from 'netlify-cms-app';
-import netlifyIdentity from 'netlify-identity-widget';
 
 import { create } from 'jss';
 import { StylesProvider, jssPreset } from '@material-ui/core/styles';
@@ -14,10 +13,6 @@ const isDevelopment = process.env.NODE_ENV === 'development';
 
 if (isClient) {
   window.CMS_MANUAL_INIT = true;
-  if (!isDevelopment) {
-    netlifyIdentity.init();
-    netlifyIdentity.open();
-  }
 }
 
 if (isDevelopment) {
@@ -77,7 +72,7 @@ const PreviewWindow = props => {
 // Netlify collections that set `widget: mdx` will be able to use this custom widget.
 // Docs: https://www.netlifycms.org/docs/widgets/
 
-CMS.registerWidget("mdx", MDXWidget, PreviewWindow);
+CMS.registerWidget('mdx', MDXWidget, PreviewWindow);
 
 // Start the CMS
 CMS.init();

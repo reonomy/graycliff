@@ -3,12 +3,13 @@ import React from 'react';
 import { Provider as StateProvider } from 'unstated';
 import { LayoutComponents, Theme } from "./Theme";
 
-// TODO: Need to create gatsby-plugin-react-head
-// import { HeadProvider } from "react-head"
-
 export const Boot: React.SFC<{ element: any }> = ({ element }) => {
   return (
     <StateProvider>
+      {/*
+        netlify-identity-widget handles invite_tokens for new users
+        TODO: handle this with a react script manager
+      */}
       <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
       <MDXProvider components={LayoutComponents}>
         <Theme>{element}</Theme>
