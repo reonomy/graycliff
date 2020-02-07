@@ -1,15 +1,15 @@
-import { MdxControl, MdxPreview } from "netlify-cms-widget-mdx"
-import React, { Component, useState } from "react"
-import { UIComponents } from "../Theme"
-import FileSystemBackend from "netlify-cms-backend-fs"
-import CMS from "netlify-cms-app"
-import netlifyIdentity from "netlify-identity-widget"
+import { MdxControl, MdxPreview } from 'netlify-cms-widget-mdx';
+import React, { Component, useState } from 'react';
+import { UIComponents } from '../Theme';
+import FileSystemBackend from 'netlify-cms-backend-fs';
+import CMS from 'netlify-cms-app';
+import netlifyIdentity from 'netlify-identity-widget';
 import { create } from 'jss';
 import { StylesProvider, jssPreset } from '@material-ui/core/styles';
 
 
-const isClient = typeof window !== "undefined"
-const isDevelopment = process.env.NODE_ENV === "development"
+const isClient = typeof window !== 'undefined'
+const isDevelopment = process.env.NODE_ENV === 'development'
 
 if (isClient) {
   window.CMS_MANUAL_INIT = true
@@ -19,7 +19,7 @@ if (isClient) {
 
 if (isDevelopment) {
   // Allows for local development overrides in cms.yaml
-  window.CMS_ENV = "localhost_development"
+  window.CMS_ENV = 'localhost_development'
 
   // Attach to the file system
   // Note this ONLY works with netlify-cms-app v2.9.1
