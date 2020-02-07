@@ -1,7 +1,7 @@
 import { MdxControl, MdxPreview } from "netlify-cms-widget-mdx"
 import React, { Component, useState } from "react"
 // import { StyleSheetManager } from "styled-components"
-import { Theme, LayoutComponents, UIComponents } from "../Theme"
+import { LayoutComponents, UIComponents } from "../Theme"
 import FileSystemBackend from "netlify-cms-backend-fs"
 import CMS from "netlify-cms-app"
 import netlifyIdentity from "netlify-identity-widget"
@@ -28,8 +28,6 @@ if (isDevelopment) {
   CMS.registerBackend('file-system', FileSystemBackend)
 }
 
-
-// @ts-check
 
 // Custom components need refs for validation and thus must be a class.
 // Additionally, after <Theme>, only one child is allowed.
@@ -92,8 +90,7 @@ const PreviewWindow = props => {
   )
 }
 
-// Netlify collections that set `widget: mdx` will be able to use this custom
-// widget. NOTE: The StyleSheet manager can *only* be injected into the Preview.
+// Netlify collections that set `widget: mdx` will be able to use this custom widget.
 // Docs: https://www.netlifycms.org/docs/widgets/
 
 CMS.registerWidget("mdx", MDXWidget, PreviewWindow)

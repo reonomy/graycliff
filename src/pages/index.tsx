@@ -1,5 +1,5 @@
-import { graphql, Link, StaticQuery } from "gatsby"
-import React from "react"
+import { graphql, Link, StaticQuery } from 'gatsby';
+import React from 'react';
 
 export default function Home() {
   return (

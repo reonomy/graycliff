@@ -1,4 +1,8 @@
-# Barebones Gatsby Starter
+[![Netlify Status](https://api.netlify.com/api/v1/badges/8f56db88-87e7-47ee-a15f-7a9e59e2442c/deploy-status)](https://app.netlify.com/sites/reonomy-graycliff/deploys)
+
+# Reonomy Style Guide
+
+A full-fleged content-managed site using Gatsby + Netlify CMS with all the trimmings:
 
 - [TypeScript](https://www.typescriptlang.org/)
 - [MDX](https://mdxjs.com/)
@@ -7,12 +11,10 @@
   support
 - [Lint Staged](https://github.com/okonet/lint-staged)
 - [Prettier](https://prettier.io/)
+- [Material-UI](https://material-ui.com/)
 
-This starter was extracted from an earlier iteration I completed while working
-on [Palette](https://palette.artsy.net), Artsy's design system. Check out the
-[docs site](https://palette.artsy.net/) for a more full-featured example
-(including some interesting live-coding capabilities) or the
-[source-code](https://github.com/artsy/palette).
+
+This site is based off [this gatsby starter](https://github.com/damassi/gatsby-starter-typescript-rebass-netlifycms).
 
 ### Development
 
@@ -21,8 +23,6 @@ yarn start
 yarn clean
 yarn type-check
 ```
-
-> Please note that Yarn is required, as NPM may not install dependencies correctly, causing issues for development.
 
 ### Deployment
 
@@ -40,8 +40,6 @@ Validation has been added via `eslint-plugin-graphql`:
 
 <img width="512" alt="screen shot 2019-01-26 at 6 49 01 pm" src="https://user-images.githubusercontent.com/236943/51796580-8110d900-21ab-11e9-91a7-1cc6d6a068fc.png">
 
-**TODO:** Figure out how to generate usable types for TypeScript with
-`apollo-cli`.
 
 <details>
   <summary>Gatsby API Details</summary>

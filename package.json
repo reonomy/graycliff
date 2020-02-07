@@ -1,6 +1,6 @@
 {
-  "name": "gatsby-starter-typescript-rebass-netlifycms",
-  "description": "My standard gatsby setup",
+  "name": "graycliff",
+  "description": "Reonomy design style guide",
   "version": "0.1.0",
   "scripts": {
     "build": "gatsby build",
@@ -118,16 +118,16 @@
     "url": "https://github.com/reonomy/gatsby-starter/issues"
   },
   "authors": [
-    "Christopher Pappas <damassi.pappas@gmail.com"
+    "Christopher Pappas <damassi.pappas@gmail.com>",
+    "Ethan Herr <herr.ethan@gmail.com>"
   ],
   "keywords": [
     "Gatsby",
     "TypeScript",
-    "Styled Components",
     "Netlify",
     "CMS",
     "MDX",
-    "Rebass",
-    "Starter"
+    "Starter",
+    "Material UI"
   ]
 }

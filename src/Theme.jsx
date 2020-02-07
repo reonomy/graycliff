@@ -1,10 +1,8 @@
-// @ts-check
-
 /**
  * Since this file is shared with NetlifyCMS it must be .jsx
  */
 
-import React, { Fragment } from "react"
+import React  from "react"
 import Button from "@material-ui/core/Button"
 import TextField from "@material-ui/core/TextField"
 import CssBaseline from '@material-ui/core/CssBaseline'
@@ -12,11 +10,7 @@ import Typography from '@material-ui/core/Typography'
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme'
 import { ThemeProvider } from '@material-ui/core/styles'
 import * as UI from '@material-ui/core'
-// import { Button } from "rebass"
 
-// export const theme = {
-
-// }
 const theme = createMuiTheme();
 
 
@@ -28,7 +22,6 @@ export const LayoutComponents = {
     </h1>
   ),
 }
-
 
 export const UIComponents = {
   ...UI,

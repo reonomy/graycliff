@@ -1,9 +1,7 @@
-// @ts-check
-
 module.exports = {
   siteMetadata: {
-    title: "Gatsby Starter",
-    description: "-- placeholder --",
+    title: "Graycliff",
+    description: "A Reonomy Design Style Guide",
     author: "techadmin@reonomy.com",
   },
   plugins: [
@@ -61,7 +59,6 @@ module.exports = {
       },
     },
     "gatsby-plugin-catch-links",
-    // "gatsby-plugin-styled-components",
     "gatsby-plugin-typescript",
     "gatsby-transformer-sharp",
     "gatsby-plugin-sharp",
