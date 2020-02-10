@@ -13,7 +13,7 @@ module.exports = {
         // Default layouts are meta wrappers around .mdx pages. Can be useful to
         // share queries across different types of pages.
         defaultLayouts: {
-          default: require.resolve("./src/layouts/DefaultLayout.tsx"),
+          default: require.resolve("./src/Layout.tsx"),
         },
 
         // Imports here are available globally to .mdx files, with the exception
@@ -56,6 +56,13 @@ module.exports = {
       options: {
         name: "mdx",
         path: `${__dirname}/content/mdx/`,
+      },
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "style",
+        path: `${__dirname}/content/style/`,
       },
     },
     "gatsby-plugin-catch-links",

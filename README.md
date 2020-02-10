@@ -13,6 +13,7 @@ A full-fleged content-managed site using Gatsby + Netlify CMS with all the trimm
 - [Prettier](https://prettier.io/)
 - [Material-UI](https://material-ui.com/)
 
+Note that many of the MDX, Netlify, and CMS related packages added here are fragile and/or no longer supported, so update and remove packages with _grave_ caution.
 
 This site is based off [this gatsby starter](https://github.com/damassi/gatsby-starter-typescript-rebass-netlifycms).
 
@@ -30,7 +31,10 @@ yarn type-check
 yarn build
 ```
 
+
 ### Demo
+
+Here's basically what you can do now with MDX:
 
 ![demo](https://user-images.githubusercontent.com/236943/51792565-abd93e00-2167-11e9-8bcb-87f7dccece52.gif)
 

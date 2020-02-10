@@ -4,36 +4,39 @@
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
-const write = require("write")
-const WebpackNotifierPlugin = require("webpack-notifier")
-const path = require("path")
-const { toLower } = require("lodash")
-const { introspectionQuery, graphql, printSchema } = require("gatsby/graphql")
-const { createFilePath } = require("gatsby-source-filesystem")
-
-// TODO: Fix apollo type generation
-// const WebpackShellPlugin = require("webpack-shell-plugin")
+const write = require('write')
+const WebpackNotifierPlugin = require('webpack-notifier')
+const path = require('path')
+const { toLower, get } = require('lodash')
+const { introspectionQuery, graphql, printSchema } = require('gatsby/graphql')
+const { createFilePath } = require('gatsby-source-filesystem')
 
 /**
  * Intercept and modify the GraphQL schema
  */
 exports.onCreateNode = ({ node, getNode, actions }) => {
-  if (node.internal.type === "Mdx") {
-    const route = toLower(
+  if (node.internal.type === 'Mdx') {
+    // Add a new "collection" field which can be accessed from the schema under fields { collection }
+    const collection = get(getNode(get(node, 'parent')), 'sourceInstanceName');
+    actions.createNodeField({
+      node,
+      name: 'collection',
+      value: collection,
+    });
+
+    // Add a new "route" field which can be accessed from the schema under fields { route }
+    const route = '/' + collection + toLower(
       createFilePath({
         node,
         getNode,
         trailingSlash: false,
       })
-    )
-
-    // Add a new field -- route -- which can be accessed from the schema under
-    // fields { route }.
+    );
     actions.createNodeField({
       node,
-      name: "route",
+      name: 'route',
       value: route,
-    })
+    });
   }
 }
 
@@ -71,7 +74,7 @@ exports.createPages = ({ graphql, actions }) => {
             // Encode the route
             path: node.fields.route,
             // Layout for the page
-            component: path.resolve("./src/layouts/DefaultLayout.tsx"),
+            component: path.resolve('./src/Layout.tsx'),
             // Values defined here are injected into the page as props and can
             // be passed to a GraphQL query as arguments
             context: {
@@ -89,7 +92,7 @@ exports.createPages = ({ graphql, actions }) => {
  * https://www.gatsbyjs.org/docs/api-proxy/#advanced-proxying
  */
 exports.onCreateDevServer = ({ app }) => {
-  const fsMiddlewareAPI = require("netlify-cms-backend-fs/dist/fs")
+  const fsMiddlewareAPI = require('netlify-cms-backend-fs/dist/fs')
   fsMiddlewareAPI(app)
 }
 
@@ -102,15 +105,10 @@ exports.onCreateWebpackConfig = ({ actions }) => {
       new WebpackNotifierPlugin({
         skipFirstNotification: true,
       }),
-
-      // FIXME: Investigate Apollo error
-      // new WebpackShellPlugin({
-      //   onBuildEnd: ["yarn emit-graphql-types"],
-      // }),
     ],
     resolve: {
       // Enable absolute import paths
-      modules: [path.resolve(__dirname, "src"), "node_modules"],
+      modules: [path.resolve(__dirname, 'src'), 'node_modules'],
     },
   })
 }
@@ -125,15 +123,15 @@ exports.onPostBootstrap = async ({ store }) => {
     const jsonSchema = await graphql(schema, introspectionQuery)
     const sdlSchema = printSchema(schema)
 
-    write.sync("schema.json", JSON.stringify(jsonSchema.data), {})
-    write.sync("schema.graphql", sdlSchema, {})
+    write.sync('schema.json', JSON.stringify(jsonSchema.data), {})
+    write.sync('schema.graphql', sdlSchema, {})
 
-    console.log("\n\n[gatsby-plugin-extract-schema] Wrote schema\n") // eslint-disable-line
+    console.log('\n\n[gatsby-plugin-extract-schema] Wrote schema\n') // eslint-disable-line
   } catch (error) {
     console.error(
-      "\n\n[gatsby-plugin-extract-schema] Failed to write schema: ",
+      '\n\n[gatsby-plugin-extract-schema] Failed to write schema: ',
       error,
-      "\n"
+      '\n'
     )
   }
 }

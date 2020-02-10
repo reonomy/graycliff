@@ -8,7 +8,7 @@ export const Boot: React.SFC<{ element: any }> = ({ element }) => {
     <StateProvider>
       {/*
         netlify-identity-widget handles invite_tokens for new users
-        TODO: handle this with a react script manager
+        TODO: handle this with a react script manager instead
       */}
       <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
       <MDXProvider components={LayoutComponents}>

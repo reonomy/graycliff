@@ -1,7 +1,7 @@
 import MDXRenderer from 'gatsby-mdx/mdx-renderer';
 import React from 'react';
 import { Link, graphql } from 'gatsby';
-import { NavTree } from 'components/NavTree';
+import { TopNav, SubNav } from './components/Nav';
 
 export default function DocsLayout(props) {
   const {
@@ -9,16 +9,21 @@ export default function DocsLayout(props) {
       mdx: {
         code,
         frontmatter: { title },
+        fields: { collection },
       },
     },
   } = props;
 
   return (
     <div>
-      <Link to="/">
-        Home
-      </Link>
-      <NavTree />
+      <header>
+        <Link to="/">
+          Home
+        </Link>
+        <TopNav />
+      </header>
+      -----
+      <SubNav collection={collection} />
       <h3>{title}</h3>
       <MDXRenderer>{code.body}</MDXRenderer>
     </div>
@@ -35,6 +40,9 @@ export const pageQuery = graphql`
       id
       frontmatter {
         title
+      }
+      fields {
+        collection
       }
       code {
         body
