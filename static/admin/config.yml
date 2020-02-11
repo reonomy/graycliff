@@ -15,10 +15,10 @@ media_folder: static/assets
 public_folder: assets
 
 collections:
-  - name: style
-    label: Style
-    description: Documentation for Reonomy design styles
-    folder: content/style
+  - name: components
+    label: Components
+    description: Documentation for Reonomy component design styles
+    folder: content/components
     extension: mdx
     format: frontmatter
     widget: mdx
@@ -28,32 +28,52 @@ collections:
       - { label: Publish Date, name: date, widget: datetime }
       - { label: Body, name: body, widget: mdx }
 
-  - name: mdx
-    label: Mdx Example
-    description: Documentation
-    folder: content/mdx
-    extension: mdx
-    format: frontmatter
-    widget: mdx
+  - name: brand
+    label: Brand
+    description: Reonomy brand guidelines
+    folder: content/brand
     create: true
     fields:
       - { label: Title, name: title, widget: string, required: true }
+      - { label: Publish Date, name: date, widget: datetime }
       - { label: Body, name: body, widget: mdx }
 
-  - name: blog
-    label: Blog
-    folder: content/blog
+  - name: code
+    label: Code
+    description: Reonomy coding guidelines
+    folder: content/code
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
-      - {
-          label: Template Key,
-          name: templateKey,
-          widget: hidden,
-          default: blog-post,
-        }
-      - { label: Title, name: title, widget: string }
+      - { label: Title, name: title, widget: string, required: true }
       - { label: Publish Date, name: date, widget: datetime }
-      - { label: Description, name: description, widget: text }
-      - { label: Tags, name: tags, widget: list }
-      - { label: Body, name: body, widget: markdown }
+      - { label: Body, name: body, widget: mdx }
+
+  # - name: mdx
+  #   label: Mdx Example
+  #   description: Documentation
+  #   folder: content/mdx
+  #   extension: mdx
+  #   format: frontmatter
+  #   widget: mdx
+  #   create: true
+  #   fields:
+  #     - { label: Title, name: title, widget: string, required: true }
+  #     - { label: Body, name: body, widget: mdx }
+
+  # - name: blog
+  #   label: Blog
+  #   folder: content/blog
+  #   create: true
+  #   slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+  #   fields:
+  #     - {
+  #         label: Template Key,
+  #         name: templateKey,
+  #         widget: hidden,
+  #         default: blog-post,
+  #       }
+  #     - { label: Title, name: title, widget: string }
+  #     - { label: Publish Date, name: date, widget: datetime }
+  #     - { label: Description, name: description, widget: text }
+  #     - { label: Tags, name: tags, widget: list }
+  #     - { label: Body, name: body, widget: markdown }

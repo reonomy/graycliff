@@ -57,9 +57,9 @@ const theme = createMuiTheme({
 export const LayoutComponents = {
   // Not used for anything yet, probably should delete
   h1: ({ children, ...props }) => (
-    <h1 {...props}>
+    <p {...props}>
       {children}
-    </h1>
+    </p>
   ),
 }
 

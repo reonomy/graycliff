@@ -1,3 +1,9 @@
 body {
     font-family: sans-serif;
 }
+
+/* hack to hide CMS h1 and date headers in preview pane */
+[class*="WidgetPreviewContainer"],
+[class*="WidgetPreviewContainer"] h1 {
+    display: none;
+}

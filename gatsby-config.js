@@ -21,7 +21,7 @@ module.exports = {
         // gatsby-mdx. See https://github.com/ChristopherBiscardi/gatsby-mdx/issues/243
         //
         // Also note: For mdx to work in NetlifyCMS, global scope passed in here
-        // also be passed into `cms.js`, under the `scope` key.
+        // also must be passed into `cms.js`, under the `scope` key.
         //
         globalScope: `
           import { UIComponents } from 'Theme'
@@ -47,22 +47,22 @@ module.exports = {
     {
       resolve: "gatsby-source-filesystem",
       options: {
-        name: "blog",
-        path: `${__dirname}/content/blog/`,
+        name: "components",
+        path: `${__dirname}/content/components/`,
       },
     },
     {
       resolve: "gatsby-source-filesystem",
       options: {
-        name: "mdx",
-        path: `${__dirname}/content/mdx/`,
+        name: "brand",
+        path: `${__dirname}/content/brand/`,
       },
     },
     {
       resolve: "gatsby-source-filesystem",
       options: {
-        name: "style",
-        path: `${__dirname}/content/style/`,
+        name: "code",
+        path: `${__dirname}/content/code/`,
       },
     },
     "gatsby-plugin-catch-links",

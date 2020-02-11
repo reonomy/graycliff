@@ -3,7 +3,6 @@ import React, { Component, useState } from 'react';
 import { LayoutComponents, UIComponents } from '../Theme';
 import FileSystemBackend from 'netlify-cms-backend-fs';
 import CMS from 'netlify-cms-app';
-
 import { create } from 'jss';
 import { StylesProvider, jssPreset } from '@material-ui/core/styles';
 
@@ -60,6 +59,7 @@ const PreviewWindow = props => {
   return (
     <div>
       <noscript ref={setRefAndCreateJss} />
+      <h2>heller?</h2>
       {jss && (
         <StylesProvider jss={jss}>
           <MdxPreview mdx={mdxProps} {...props} />
