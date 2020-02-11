@@ -1,0 +1,35 @@
+@font-face {
+  font-family: 'Basier Square Regular';
+  src: url(./fonts/basier-square/basiersquare-regular.eot);
+  src: url(./fonts/basier-square/basiersquare-regular.eot?#iefix) format('embedded-opentype'),
+    url(./fonts/basier-square/basiersquare-regular.woff) format('woff'),
+    url(./fonts/basier-square/basiersquare-regular.otf) format('opentype'),
+    url(./fonts/basier-square/basiersquare-regular.svg) format('svg');
+}
+
+@font-face {
+  font-family: 'Basier Square Medium';
+  src: url(./fonts/basier-square/basiersquare-medium.eot);
+  src: url(./fonts/basier-square/basiersquare-medium.eot?#iefix) format('embedded-opentype'),
+    url(./fonts/basier-square/basiersquare-medium.woff) format('woff'),
+    url(./fonts/basier-square/basiersquare-medium.otf) format('opentype'),
+    url(./fonts/basier-square/basiersquare-medium.svg) format('svg');
+}
+
+@font-face {
+  font-family: 'Basier Square Bold';
+  src: url(./fonts/basier-square/basiersquare-bold.eot);
+  src: url(./fonts/basier-square/basiersquare-bold.eot?#iefix) format('embedded-opentype'),
+    url(./fonts/basier-square/basiersquare-bold.woff) format('woff'),
+    url(./fonts/basier-square/basiersquare-bold.otf) format('opentype'),
+    url(./fonts/basier-square/basiersquare-bold.svg) format('svg');
+}
+
+@font-face {
+  font-family: 'Basier Square SemiBold';
+  src: url(./fonts/basier-square/basiersquare-semibold.eot);
+  src: url(./fonts/basier-square/basiersquare-semibold.eot?#iefix) format('embedded-opentype'),
+    url(./fonts/basier-square/basiersquare-semibold.woff) format('woff'),
+    url(./fonts/basier-square/basiersquare-semibold.otf) format('opentype'),
+    url(./fonts/basier-square/basiersquare-semibold.svg) format('svg');
+}

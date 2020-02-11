@@ -1,7 +1,11 @@
-import React, { Fragment, useState, memo } from 'react';
-import { TreeNode, pathListToTree } from './utils/pathListToTree';
-import { Link, StaticQuery, graphql, useStaticQuery } from 'gatsby';
-import { includes, reject, sortBy, groupBy, keys, get } from 'lodash';
+import React from 'react';
+import { graphql, useStaticQuery, navigateTo } from 'gatsby';
+import { groupBy, get, pick, keys, findIndex } from 'lodash';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import useStyles from './styles';
 
 
 interface INavItem {
@@ -22,7 +26,7 @@ interface INavData {
   [key: string]: INavItem[];
 }
 
-function navData(): INavData  {
+export function useNavData(): INavData  {
   const { allMdx } = useStaticQuery(
     // get all pages sorted by publish date so we can order them as such in subnav
     graphql`
@@ -47,37 +51,54 @@ function navData(): INavData  {
   return groupBy(allMdx.edges as INavItem[], 'node.fields.collection');
 }
 
-function TopNavItem({ item }: {item: INavItem}) {
-  return (
-    <Link to={item.node.fields.route}>
-      {item.node.fields.collection}
-    </Link>
-  )
-}
+export function TopNav({ currentPage }: { currentPage: string}) {
+  const navItemsPreference = ['style', 'brand', 'code', 'mdx'];
+  const data = pick(useNavData(), navItemsPreference);
+  const navItems = keys(data);
+  const tabValue = findIndex(navItems, i => currentPage.indexOf(`/${i}/`) > -1);
+  const navigate = (path: string) => navigateTo(path);
+  const classes = useStyles();
 
-export function TopNav() {
-  const data = navData();
   return (
-    // create top-level collection link off first item in ordered page list
     <div>
-      { data['style'] && <TopNavItem item={data['style'][0]}/> }
-      { data['voice-and-tone'] && <TopNavItem item={data['voice-and-tone'][0]}/> }
-      { data['code'] && <TopNavItem item={data['code'][0]}/> }
-      { data['mdx'] && <TopNavItem item={data['mdx'][0]}/> }
+      <Tabs value={tabValue} aria-label="navigation" indicatorColor="primary" variant="scrollable">
+        {navItems.map((collection, index) =>
+          <Tab
+            key={collection}
+            label={collection}
+            classes={{
+              root: tabValue === index ? '' : classes.muted
+            }}
+            className={classes.tab}
+            // link to the collection means link to first page within the collection
+            onClick={() => navigate(data[collection][0].node.fields.route)}
+          />
+        )}
+      </Tabs>
     </div>
   )
 }
 
-export function SubNav({ collection }: { collection: string}) {
-  const data = get(navData(), collection) || [];
+export function SubNav({ collection, currentPage }: { collection: string, currentPage: string }) {
+  const data = get(useNavData(), collection) || [];
+  const classes = useStyles();
+  const navigate = (path: string) => navigateTo(path);
+
   return (
-    <div>
-      subnav ----- <br />
+    <List component="nav" aria-label="pages within collection">
       {data.map(item =>
-        <Link key={item.node.id} to={item.node.fields.route}>
+        <ListItem
+          key={item.node.id}
+          button
+          classes={{
+            root: currentPage.indexOf(item.node.fields.route) > -1 ? '' : classes.muted
+          }}
+          className={classes.listItem}
+          component="a"
+          onClick={() => navigate(item.node.fields.route)}>
           {item.node.frontmatter.title}
-        </Link>
+        </ListItem>
       )}
-    </div>
+    </List>
   );
 }

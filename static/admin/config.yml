@@ -16,8 +16,8 @@ public_folder: assets
 
 collections:
   - name: style
-    label: Style Page
-    description: Documentation
+    label: Style
+    description: Documentation for Reonomy design styles
     folder: content/style
     extension: mdx
     format: frontmatter

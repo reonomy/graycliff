@@ -74,7 +74,7 @@ exports.createPages = ({ graphql, actions }) => {
             // Encode the route
             path: node.fields.route,
             // Layout for the page
-            component: path.resolve('./src/Layout.tsx'),
+            component: path.resolve('./src/components/Layout/index.tsx'),
             // Values defined here are injected into the page as props and can
             // be passed to a GraphQL query as arguments
             context: {

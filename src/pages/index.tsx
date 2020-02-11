@@ -21,6 +21,7 @@ export default function Home() {
         }
       `}
       render={data => {
+        // TODO: just redirect to the first page of first collection
         return (
           <div>
             <h1>Page Index</h1>

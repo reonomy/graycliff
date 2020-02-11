@@ -13,7 +13,7 @@ module.exports = {
         // Default layouts are meta wrappers around .mdx pages. Can be useful to
         // share queries across different types of pages.
         defaultLayouts: {
-          default: require.resolve("./src/Layout.tsx"),
+          default: require.resolve("./src/components/Layout/index.tsx"),
         },
 
         // Imports here are available globally to .mdx files, with the exception
