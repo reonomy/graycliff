@@ -3,6 +3,7 @@ import React from 'react';
 import { Link, graphql } from 'gatsby';
 import { TopNav, SubNav } from '../../components/Nav';
 import { IconReonomy } from '../../styles/icons';
+import EditButton from '../EditButton';
 import styles from './styles';
 import withStyles from '@material-ui/core/styles/withStyles';
 
@@ -42,6 +43,7 @@ function Layout(props) {
           </div>
         </div>
       </main>
+      <EditButton />
     </div>
   )
 }

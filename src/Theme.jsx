@@ -51,7 +51,13 @@ const theme = createMuiTheme({
   shape: {
     borderRadius: 2
   },
-  overrides: {}
+  overrides: {
+    MuiTooltip: {
+      tooltip: {
+        fontSize: '.875rem'
+      }
+    },
+  }
 });
 
 export const LayoutComponents = {

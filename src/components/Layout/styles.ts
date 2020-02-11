@@ -46,8 +46,10 @@ export default function styles(theme: Theme) {
       top: theme.spacing(1),
       [theme.breakpoints.up('sm')]: {
         top: 'auto' as 'auto',
+        padding: theme.spacing(1),
+
         '& svg': {
-          fontSize: '2.5rem'
+          fontSize: '2.25rem'
         }
       }
     },

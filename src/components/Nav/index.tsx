@@ -60,22 +60,25 @@ export function TopNav({ currentPage }: { currentPage: string}) {
   const classes = useStyles();
 
   return (
-    <div>
-      <Tabs value={tabValue} aria-label="navigation" indicatorColor="primary" variant="scrollable">
-        {navItems.map((collection, index) =>
-          <Tab
-            key={collection}
-            label={collection}
-            classes={{
-              root: tabValue === index ? '' : classes.muted
-            }}
-            className={classes.tab}
-            // link to the collection means link to first page within the collection
-            onClick={() => navigate(data[collection][0].node.fields.route)}
-          />
-        )}
-      </Tabs>
-    </div>
+    <Tabs
+      value={tabValue}
+      className={classes.nav}
+      aria-label="navigation"
+      indicatorColor="primary"
+      variant="scrollable">
+      {navItems.map((collection, index) =>
+        <Tab
+          key={collection}
+          label={collection}
+          classes={{
+            root: tabValue === index ? '' : classes.muted
+          }}
+          className={classes.tab}
+          // link to the collection means link to first page within the collection
+          onClick={() => navigate(data[collection][0].node.fields.route)}
+        />
+      )}
+    </Tabs>
   )
 }
 

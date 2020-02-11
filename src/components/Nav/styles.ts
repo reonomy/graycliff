@@ -13,13 +13,15 @@ export interface IStyleClasses {
 export default makeStyles((theme: Theme) => {
   return {
     nav: {
-      display: 'block',
-      margin: 0,
-      padding: 0
+      [theme.breakpoints.up('sm')]: {
+        marginLeft: 'auto',
+        paddingLeft: theme.spacing(2),
+        width: '80%'
+      }
     },
     tab: {
-      paddingTop: theme.spacing(3),
-      paddingBottom: theme.spacing(3),
+      paddingTop: theme.spacing(2),
+      paddingBottom: theme.spacing(2),
       textTransform: 'capitalize' as 'capitalize',
       fontFamily: "'Basier Square SemiBold', Helvetica, Arial, sans-serif",
       minWidth: theme.spacing(12),
