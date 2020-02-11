@@ -59,7 +59,6 @@ const PreviewWindow = props => {
   return (
     <div>
       <noscript ref={setRefAndCreateJss} />
-      <h2>heller?</h2>
       {jss && (
         <StylesProvider jss={jss}>
           <MdxPreview mdx={mdxProps} {...props} />

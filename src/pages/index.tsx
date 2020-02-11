@@ -1,49 +1,14 @@
-import { graphql, Link, StaticQuery } from 'gatsby';
+import { navigateTo } from 'gatsby';
 import React from 'react';
+import keys from 'lodash/keys';
+import { useNavData } from '../components/Nav';
 
 export default function Home() {
-  return (
-    <StaticQuery
-      query={graphql`
-        query AllPagesQuery {
-          allMdx {
-            edges {
-              node {
-                fields {
-                  route
-                }
-                frontmatter {
-                  title
-                }
-              }
-            }
-          }
-        }
-      `}
-      render={data => {
-        // TODO: just redirect to the first page of first collection
-        return (
-          <div>
-            <h1>Page Index</h1>
-            <div>
-              {data.allMdx.edges.map((edge, index) => {
-                const {
-                  node: {
-                    fields: { route },
-                    frontmatter: { title },
-                  },
-                } = edge;
-
-                return (
-                  <div key={index}>
-                    <Link to={route}>{title}</Link>
-                  </div>
-                )
-              })}
-            </div>
-          </div>
-        )
-      }}
-    />
-  )
+  const data = useNavData();
+  const frontPage = data['components'] ? data['components'][0] : data[keys(data)[0]][0];
+  if (frontPage?.node?.fields?.route) {
+    navigateTo(frontPage.node.fields.route);
+    return '';
+  }
+  return <p>No front page found!</p>;
 }

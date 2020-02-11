@@ -1,4 +1,4 @@
-describe("NavTree", () => {
+describe("Nav", () => {
   it("should work", () => {
     expect("it to work")
   })

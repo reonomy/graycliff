@@ -52,7 +52,7 @@ export function useNavData(): INavData  {
 }
 
 export function TopNav({ currentPage }: { currentPage: string}) {
-  const navItemsPreference = ['style', 'brand', 'code', 'mdx'];
+  const navItemsPreference = ['components', 'brand', 'code'];
   const data = pick(useNavData(), navItemsPreference);
   const navItems = keys(data);
   const tabValue = findIndex(navItems, i => currentPage.indexOf(`/${i}/`) > -1);
