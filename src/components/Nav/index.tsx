@@ -1,5 +1,5 @@
 import React from 'react';
-import { graphql, useStaticQuery, navigateTo } from 'gatsby';
+import { graphql, useStaticQuery, navigate } from 'gatsby';
 import { groupBy, get, pick, keys, findIndex } from 'lodash';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -56,7 +56,7 @@ export function TopNav({ currentPage }: { currentPage: string}) {
   const data = pick(useNavData(), navItemsPreference);
   const navItems = keys(data);
   const tabValue = findIndex(navItems, i => currentPage.indexOf(`/${i}/`) > -1);
-  const navigate = (path: string) => navigateTo(path);
+  const navigateTo = (path: string) => navigate(path);
   const classes = useStyles();
 
   return (
@@ -75,7 +75,7 @@ export function TopNav({ currentPage }: { currentPage: string}) {
           }}
           className={classes.tab}
           // link to the collection means link to first page within the collection
-          onClick={() => navigate(data[collection][0].node.fields.route)}
+          onClick={() => navigateTo(data[collection][0].node.fields.route)}
         />
       )}
     </Tabs>
@@ -85,7 +85,7 @@ export function TopNav({ currentPage }: { currentPage: string}) {
 export function SubNav({ collection, currentPage }: { collection: string, currentPage: string }) {
   const data = get(useNavData(), collection) || [];
   const classes = useStyles();
-  const navigate = (path: string) => navigateTo(path);
+  const navigateTo = (path: string) => navigate(path);
 
   return (
     <List component="nav" aria-label="pages within collection">
@@ -98,7 +98,7 @@ export function SubNav({ collection, currentPage }: { collection: string, curren
           }}
           className={classes.listItem}
           component="a"
-          onClick={() => navigate(item.node.fields.route)}>
+          onClick={() => navigateTo(item.node.fields.route)}>
           {item.node.frontmatter.title}
         </ListItem>
       )}

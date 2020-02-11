@@ -17,9 +17,6 @@ export default function styles(theme: Theme) {
       '&:hover': {
         backgroundColor: theme.palette.grey[100],
       }
-      // [theme.breakpoints.up('sm')]: {
-
-      // }
     }
   }
 };
