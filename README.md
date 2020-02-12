@@ -17,6 +17,10 @@ Note that many of the MDX, Netlify, and CMS related packages added here are frag
 
 This site is based off [this gatsby starter](https://github.com/damassi/gatsby-starter-typescript-rebass-netlifycms).
 
+The name of this site is based of a Frank Lloyd Wright house in NY state. Like our style guide, it is a beautiful thing. However there are some areas that may never be reconciled.
+
+<img src="https://user-images.githubusercontent.com/5460067/74342293-427a9c00-4d77-11ea-8e67-a0622aa8278d.png" width="350" />
+
 ### Development
 
 ```sh
@@ -33,10 +37,12 @@ yarn build
 
 
 ### Demo
+<details>
+  <summary>Here's a silly demo of what you can do now with MDX:</summary>
 
-Here's basically what you can do now with MDX:
+  ![demo](https://user-images.githubusercontent.com/236943/51792565-abd93e00-2167-11e9-8bcb-87f7dccece52.gif)
 
-![demo](https://user-images.githubusercontent.com/236943/51792565-abd93e00-2167-11e9-8bcb-87f7dccece52.gif)
+</details>
 
 ### GraphQL Validation
 
