@@ -7,7 +7,7 @@ import withStyles from '@material-ui/core/styles/withStyles';
 function EditButton({ classes }) {
 
   // hack to show edit button link to only those who are logged in
-  if ((window as any)?.netlifyIdentity?.currentUser) {
+  if (typeof window !== 'undefined' && (window as any).netlifyIdentity) {
     const user = (window as any).netlifyIdentiy.currentUser();
     if (user) {
       return (
