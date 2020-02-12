@@ -17,7 +17,7 @@ Note that many of the MDX, Netlify, and CMS related packages added here are frag
 
 This site is based off [this gatsby starter](https://github.com/damassi/gatsby-starter-typescript-rebass-netlifycms).
 
-The name of this site is based of a Frank Lloyd Wright house in NY state. Like our style guide, it is a beautiful thing. However there are some areas that may never be reconciled.
+The name of this site is based of a Frank Lloyd Wright house in NY State. Like our style guide, it is a beautiful thing. However there are some areas that may never be reconciled.
 
 <img src="https://user-images.githubusercontent.com/5460067/74342293-427a9c00-4d77-11ea-8e67-a0622aa8278d.png" width="350" />
 
