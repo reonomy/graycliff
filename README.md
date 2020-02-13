@@ -1,6 +1,6 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/8f56db88-87e7-47ee-a15f-7a9e59e2442c/deploy-status)](https://app.netlify.com/sites/reonomy-graycliff/deploys)
 
-# Reonomy Style Guide
+# Reonomy Style Guide Public Site
 
 A full-fleged content-managed site using Gatsby + Netlify CMS with all the trimmings:
 
