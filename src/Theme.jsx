@@ -5,7 +5,6 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import ReonomyPalette from './styles/palette';
 import * as UI from '@material-ui/core';
 
-const hasTouch = 'ontouchstart' in document.documentElement;
 
 const theme = createMuiTheme({
   typography: {
@@ -80,12 +79,12 @@ const theme = createMuiTheme({
     }
   },
   props: {
-    MuiButton: {
-      disableRipple: !hasTouch
-    },
-    MuiTab: {
-      disableRipple: !hasTouch
-    }
+    // MuiButton: {
+    //   disableRipple: !hasTouch
+    // },
+    // MuiTab: {
+    //   disableRipple: !hasTouch
+    // }
   }
 });
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { withStyles } from '@material-ui/styles'
 import styles, { IStyleClasses } from './styles';
 
@@ -8,10 +8,12 @@ import CodeIcon from '@material-ui/icons/Code';
 
 
 const Buttons = ({ classes }: IStyleClasses) => {
+    const [code, setCode] = useState(false)
+
     return (
         <section className={classes.root}>
             <div className={classes.buttons}>
-            <CodeIcon className={classes.expand} fontSize='small'></CodeIcon>
+            <CodeIcon className={classes.expand} fontSize='small' onClick={() => setCode(!code)}></CodeIcon>
             <Button 
              size="medium"
              variant="contained"
@@ -62,9 +64,9 @@ const Buttons = ({ classes }: IStyleClasses) => {
                 Icon and Text
             </Button>
             </div>
-            <pre className={classes.code}>
+            {code && <pre className={classes.code}>
                 Hello World
-            </pre>
+            </pre>}
         </section>
     )
 }
