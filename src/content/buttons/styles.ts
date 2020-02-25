@@ -17,13 +17,13 @@ export default function styles(theme: Theme) {
       },
         buttons: {
             display: 'flex',
-            justifyContent: 'space-between',
+            justifyContent: 'space-between' as 'space-between',
             padding: `${theme.spacing(2)}px ${theme.spacing(1)}px`,
             background: theme.palette.grey[50],
-            position: 'relative'
+            position: 'relative' as 'relative'
         },
         expand: {
-          position: 'absolute',
+          position: 'absolute' as 'absolute',
           top: 0,
           right: 0,
           cursor: 'pointer'
