@@ -32,7 +32,8 @@ export default function styles(theme: Theme) {
           marginRight: theme.spacing(7)
         },
         code: {
-          padding: theme.spacing(2)
+          padding: theme.spacing(2),
+          fontSize: theme.typography.body2.fontSize
         }
     }
   }
