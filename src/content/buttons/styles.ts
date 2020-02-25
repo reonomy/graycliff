@@ -6,7 +6,6 @@ export interface IStyleClasses {
       expand: string;
       margin: string;
       buttons: string;
-      code: string;
     };
   }
 
@@ -30,9 +29,6 @@ export default function styles(theme: Theme) {
         },
         margin: {
           marginRight: theme.spacing(7)
-        },
-        code: {
-          
         }
     }
   }

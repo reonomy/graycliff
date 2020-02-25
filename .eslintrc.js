@@ -52,6 +52,9 @@ module.exports = {
         allow: ["warn", "error"],
       },
     ],
+    "no-inferrable-types": [
+      "ignore-properties"
+    ],
     "react/display-name": 0,
     "react/prop-types": 0,
   },

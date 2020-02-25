@@ -5,6 +5,8 @@ import styles, { IStyleClasses } from './styles';
 import Button from '@material-ui/core/Button';
 import DeleteIcon from '@material-ui/icons/Delete';
 import CodeIcon from '@material-ui/icons/Code';
+import Highlight from 'react-highlight'
+import buttonString from './string';
 
 
 const Buttons = ({ classes }: IStyleClasses) => {
@@ -64,9 +66,9 @@ const Buttons = ({ classes }: IStyleClasses) => {
                 Icon and Text
             </Button>
             </div>
-            {code && <pre className={classes.code}>
-                Hello World
-            </pre>}
+            {code && <Highlight language="jsx" >
+            {buttonString}
+            </Highlight>}
         </section>
     )
 }
