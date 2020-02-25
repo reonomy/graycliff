@@ -7,6 +7,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import CodeIcon from '@material-ui/icons/Code';
 import Highlight from 'react-highlight'
 import buttonString from './string';
+import '../../../node_modules/highlight.js/styles/tomorrow-night-bright.css'
 
 
 const Buttons = ({ classes }: IStyleClasses) => {
