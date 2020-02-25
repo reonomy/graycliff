@@ -66,7 +66,7 @@ const Buttons = ({ classes }: IStyleClasses) => {
                 Icon and Text
             </Button>
             </div>
-            {code && <Highlight language="jsx" >
+            {code && <Highlight language="jsx" className={classes.code}>
             {buttonString}
             </Highlight>}
         </section>
