@@ -42,11 +42,10 @@ const Buttons = (props: IButtons) => {
   let stringChildren: any = []
 
   for (let i = 0; i < React.Children.count(children); i++) {
-    stringChildren.push(jsxToString(props.children[i]))
+    stringChildren.push(jsxToString(props.children[i]).replace('WithStyles(ForwardRef(Button))', 'Button').replace('/WithStyles(ForwardRef(Button))', '/Button'))
   }
 
-  stringChildren = stringChildren.join(' ')
-  
+  stringChildren = stringChildren.join("\n")
   return (
     <section className={classes.root}>
       <div className={classes.button}>
@@ -55,7 +54,7 @@ const Buttons = (props: IButtons) => {
       </div>
       {code && 
         <Highlight language="javascript" className={classes.code}>
-            {buttonString}
+            {stringChildren}
         </Highlight>} 
     </section>
   )
