@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useMemo } from 'react'
 import { makeStyles } from '@material-ui/styles'
 import CodeIcon from '@material-ui/icons/Code';
 import Highlight from 'react-highlight'
@@ -35,23 +35,29 @@ const useStyles = makeStyles({
 
 const Buttons = (props: IButtons) => {
   const classes = useStyles();
-  const [code, setCode] = useState(false)
+  const [isCodeOpen, setCode] = useState(false)
   const children = React.Children.toArray(props.children)
 
-  let stringChildren: any = []
+  const stringChildren = useMemo(() => {
+    let stringed: string[] | string = []
+  
+    for (let i = 0; i < React.Children.count(children); i++) {
+      stringed
+        .push(jsxToString(props.children[i])
+        .replace('WithStyles(ForwardRef(Button))', 'Button')
+        .replace('/WithStyles(ForwardRef(Button))', '/Button'))
+    }
+  
+    return stringed.join("\n\n")
+  }, [props.children])
 
-  for (let i = 0; i < React.Children.count(children); i++) {
-    stringChildren.push(jsxToString(props.children[i]).replace('WithStyles(ForwardRef(Button))', 'Button').replace('/WithStyles(ForwardRef(Button))', '/Button'))
-  }
-
-  stringChildren = stringChildren.join("\n\n")
   return (
     <section className={classes.root}>
       <div className={classes.button}>
-        <CodeIcon className={classes.expand} fontSize='small' onClick={() => setCode(!code)}></CodeIcon>
+        <CodeIcon className={classes.expand} fontSize='small' onClick={() => setCode(!isCodeOpen)}></CodeIcon>
         {props.children}
       </div>
-      {code && 
+      {isCodeOpen && 
         <Highlight language="javascript" className={classes.code}>
             {stringChildren}
         </Highlight>} 
