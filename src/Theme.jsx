@@ -4,6 +4,8 @@ import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
 import { ThemeProvider } from '@material-ui/core/styles';
 import ReonomyPalette from './styles/palette';
 import * as UI from '@material-ui/core';
+import DeleteIcon from '@material-ui/icons/Delete'
+import Buttons from './content/buttons'
 
 const theme = createMuiTheme({
   typography: {
@@ -90,6 +92,8 @@ export const LayoutComponents = {
 
 export const UIComponents = {
   ...UI,
+  DeleteIcon,
+  Buttons,
   // TODO: include additional custom components here, eg:
   Janky: props => <UI.TextField {...props} placeholder={'janky'} />
 }

@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { makeStyles } from '@material-ui/styles'
 import CodeIcon from '@material-ui/icons/Code';
 import Highlight from 'react-highlight'
-import buttonString from './string';
 import '../../../node_modules/highlight.js/styles/tomorrow-night-bright.css'
 import jsxToString from 'jsx-to-string';
 
@@ -45,7 +44,7 @@ const Buttons = (props: IButtons) => {
     stringChildren.push(jsxToString(props.children[i]).replace('WithStyles(ForwardRef(Button))', 'Button').replace('/WithStyles(ForwardRef(Button))', '/Button'))
   }
 
-  stringChildren = stringChildren.join("\n")
+  stringChildren = stringChildren.join("\n\n")
   return (
     <section className={classes.root}>
       <div className={classes.button}>
