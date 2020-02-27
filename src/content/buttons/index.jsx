@@ -4,7 +4,6 @@ import CodeIcon from '@material-ui/icons/Code';
 import Highlight from 'react-highlight'
 import '../../../node_modules/highlight.js/styles/tomorrow-night-bright.css'
 import jsxToString from 'jsx-to-string';
-import reactElementToJSXString from 'react-element-to-jsx-string';
 
 const useStyles = makeStyles({
   root: {
