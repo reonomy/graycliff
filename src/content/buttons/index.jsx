@@ -4,6 +4,7 @@ import CodeIcon from '@material-ui/icons/Code';
 import Highlight from 'react-highlight'
 import '../../../node_modules/highlight.js/styles/tomorrow-night-bright.css'
 import jsxToString from 'jsx-to-string';
+import reactElementToJSXString from 'react-element-to-jsx-string';
 
 const useStyles = makeStyles({
   root: {
@@ -39,7 +40,9 @@ const Buttons = (props) => {
   
     for (let i = 0; i < React.Children.count(children); i++) {
       stringed
-        .push(jsxToString(props.children[i]))
+        .push(reactElementToJSXString(props.children[i])
+        .replace('WithStyles(ForwardRef(Button))', 'Button')
+        .replace('/WithStyles(ForwardRef(Button))', '/Button'))
     }
   
     return stringed.join("\n\n")
