@@ -47,6 +47,8 @@ const Buttons = (props) => {
     return stringed.join("\n\n")
   }, [props.children])
 
+  console.log(stringChildren)
+
   return (
     <section className={classes.root}>
       <div className={classes.button}>
