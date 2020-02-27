@@ -97,13 +97,13 @@ function serializeItem (item, options, delimit=true) {
 function jsxToString (component, options) {
 
   const baseOpts = {
-    displayName: component.type.displayName || component.type.name ||
-      component.type,
+    displayName: component.type.displayName || component.type.name ||component.type,
     ignoreProps: [],
     ignoreTags: [],
     keyValueOverride: {},
     spacing: 0,
-    detectFunctions: false
+    detectFunctions: false,
+    singleLineProps: false
   };
 
   const opts = {...baseOpts, ...options};

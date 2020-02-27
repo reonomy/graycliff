@@ -44,8 +44,6 @@ const Buttons = (props) => {
           ignoreProps: ['key'],
           singleLineProps: true
         }))
-
-        console.log(jsxToString(children[i], {}))
     }
   
     return stringed.join("\n\n")
