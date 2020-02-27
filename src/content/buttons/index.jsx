@@ -40,7 +40,7 @@ const Buttons = (props) => {
   
     for (let i = 0; i < React.Children.count(children); i++) {
       stringed
-        .push(reactElementToJSXString(props.children[i])
+        .push(jsxToString(props.children[i])
         .replace('WithStyles(ForwardRef(Button))', 'Button')
         .replace('/WithStyles(ForwardRef(Button))', '/Button'))
     }
