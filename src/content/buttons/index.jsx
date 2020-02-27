@@ -5,24 +5,20 @@ import Highlight from 'react-highlight'
 import '../../../node_modules/highlight.js/styles/tomorrow-night-bright.css'
 import jsxToString from 'jsx-to-string';
 
-interface IButtons {
-  children: React.ReactElement;
-}
-
 const useStyles = makeStyles({
   root: {
     
   },
   button: {
     display: 'flex',
-    justifyContent: 'space-between' as 'space-between',
+    justifyContent: 'space-between',
     padding: `16px 8px`,
     paddingRight: '50px',
     background: `#F7F9FE`,
-    position: 'relative' as 'relative'
+    position: 'relative'
   },
   expand: {
-    position: 'absolute' as 'absolute',
+    position: 'absolute',
     top: 0,
     right: 0,
     cursor: 'pointer'
@@ -33,13 +29,13 @@ const useStyles = makeStyles({
   }
 });
 
-const Buttons = (props: IButtons) => {
+const Buttons = (props) => {
   const classes = useStyles();
   const [isCodeOpen, setCode] = useState(false)
   const children = React.Children.toArray(props.children)
 
   const stringChildren = useMemo(() => {
-    let stringed: string[] | string = []
+    let stringed = []
   
     for (let i = 0; i < React.Children.count(children); i++) {
       stringed
