@@ -4,6 +4,8 @@ import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
 import { ThemeProvider } from '@material-ui/core/styles';
 import ReonomyPalette from './styles/palette';
 import * as UI from '@material-ui/core';
+import DeleteIcon from '@material-ui/icons/Delete'
+import Buttons from './content/buttons'
 
 const theme = createMuiTheme({
   typography: {
@@ -17,15 +19,15 @@ const theme = createMuiTheme({
   },
   palette: {
     primary: {
-      light: ReonomyPalette.pelorousLight,
-      main: ReonomyPalette.pelorous,
-      dark: ReonomyPalette.pelorousDark,
-      contrastText: '#fff'
-    },
-    secondary: {
       light: ReonomyPalette.bayOfManyLight,
       main: ReonomyPalette.bayOfMany,
       dark: ReonomyPalette.bayOfManyDark,
+      contrastText: '#fff'
+    },
+    secondary: {
+      light: ReonomyPalette.pelorousLight,
+      main: ReonomyPalette.pelorous,
+      dark: ReonomyPalette.pelorousDark,
       contrastText: '#fff'
     },
     text: {
@@ -33,19 +35,19 @@ const theme = createMuiTheme({
     },
     // grey palette generated off tuatara (grey[800]) here https://materialpalettes.com/
     grey: {
-      '50': '#faf8f7',
-      '100': '#f3f1f0',
-      '200': '#e9e8e7',
-      '300': '#d9d8d7',
-      '400': '#b5b4b3',
-      '500': '#959493',
-      '600': '#6d6c6b',
-      '700': '#5a5857',
-      '800': '#3b3a39',
-      '900': '#1b1a19'
+      '50': '#F7F9FE',
+      '100': '#F1F3F7',
+      '200': '#E9EBEF',
+      '300': '#DADCE0',
+      '400': '#B7B9BC',
+      '500': '#97999D',
+      '600': '#6F7074',
+      '700': '#5B5D60',
+      '800': '#3C3E41',
+      '900': '#1C1D20'
     },
     // background: {
-    //   default: '#faf8f7' // grey[50]
+    //   default: '#F7F9FE' // grey[50]
     // }
   },
   shape: {
@@ -57,6 +59,25 @@ const theme = createMuiTheme({
         fontSize: '.875rem'
       }
     },
+    MuiButton: {
+      containedPrimary: {
+        boxShadow: 'none',
+        '&:hover': {
+          boxShadow: 'none'
+        }
+      },
+      containedSecondary: {
+        boxShadow: 'none',
+        '&:hover': {
+          boxShadow: 'none'
+        }
+      },
+      contained: {
+        '&:active': {
+          boxShadow: 'none'
+        }
+      }
+    }
   }
 });
 
@@ -71,6 +92,8 @@ export const LayoutComponents = {
 
 export const UIComponents = {
   ...UI,
+  DeleteIcon,
+  Buttons,
   // TODO: include additional custom components here, eg:
   Janky: props => <UI.TextField {...props} placeholder={'janky'} />
 }
