@@ -91,6 +91,7 @@
     "gatsby-source-filesystem": "^2.0.16",
     "gatsby-transformer-sharp": "^2.1.8",
     "hast-util-to-string": "^1.0.1",
+    "immutable": "^4.0.0-rc.12",
     "jss": "^10.0.4",
     "jsx-to-string": "^1.4.0",
     "lodash": "^4.17.11",

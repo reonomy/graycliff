@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/styles'
 import CodeIcon from '@material-ui/icons/Code';
 import Highlight from 'react-highlight'
 import '../../../node_modules/highlight.js/styles/tomorrow-night-bright.css'
-import jsxToString from 'jsx-to-string';
+import jsxToString from '../../utils/jsx-to-string/index';
 
 const useStyles = makeStyles({
   root: {
@@ -37,26 +37,29 @@ const Buttons = (props) => {
   const stringChildren = useMemo(() => {
     let stringed = []
   
-    for (let i = 0; i < React.Children.count(children); i++) {
+    for (let i = 0; i < children.length; i++) {
       stringed
-        .push(jsxToString(props.children[i])
-        .replace('WithStyles(ForwardRef(Button))', 'Button')
-        .replace('/WithStyles(ForwardRef(Button))', '/Button'))
+        .push(jsxToString(children[i], {
+          displayName: 'Buttons',
+          ignoreProps: ['key'],
+          singleLineProps: true
+        }))
+
+        console.log(jsxToString(children[i], {}))
     }
   
     return stringed.join("\n\n")
-  }, [props.children])
+  }, [children])
 
-  console.log(stringChildren)
 
   return (
     <section className={classes.root}>
       <div className={classes.button}>
-        <CodeIcon className={classes.expand} fontSize='small' onClick={() => setCode(!isCodeOpen)}></CodeIcon>
+        <CodeIcon className={classes.expand} fontSize="small" onClick={() => setCode(!isCodeOpen)}></CodeIcon>
         {props.children}
       </div>
       {isCodeOpen && 
-        <Highlight language="javascript" className={classes.code}>
+        <Highlight language="jsx" className={classes.code}>
             {stringChildren}
         </Highlight>} 
     </section>
