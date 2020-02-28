@@ -5,32 +5,7 @@ import Highlight from 'react-highlight'
 import '../../../node_modules/highlight.js/styles/tomorrow-night-bright.css'
 import jsxToString from '../../utils/jsx-to-string/index';
 
-const useStyles = makeStyles({
-  root: {
-    
-  },
-  button: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    padding: `16px 8px`,
-    paddingRight: '50px',
-    background: `#F7F9FE`,
-    position: 'relative'
-  },
-  expand: {
-    position: 'absolute',
-    top: 0,
-    right: 0,
-    cursor: 'pointer'
-  },
-  code: {
-    padding: `16px`,
-    fontSize: `14px`
-  }
-});
-
 const Buttons = (props) => {
-  const classes = useStyles();
   const [isCodeOpen, setCode] = useState(false)
   const children = React.Children.toArray(props.children)
 
@@ -40,7 +15,7 @@ const Buttons = (props) => {
     for (let i = 0; i < children.length; i++) {
       stringed
         .push(jsxToString(children[i], {
-          displayName: 'Buttons',
+          displayName: 'Button',
           ignoreProps: ['key'],
           singleLineProps: true
         }))
@@ -51,13 +26,13 @@ const Buttons = (props) => {
 
 
   return (
-    <section className={classes.root}>
-      <div className={classes.button}>
-        <CodeIcon className={classes.expand} fontSize="small" onClick={() => setCode(!isCodeOpen)}></CodeIcon>
+    <section>
+      <div style={{display: 'flex', justifyContent: 'space-between', padding: '16px 8px', paddingRight: '50px', background: `#F7F9FE`, position: 'relative'}}>
+        <CodeIcon style={{position: 'absolute', top: 0, right: 0, cursor: 'pointer'}} fontSize="small" onClick={() => setCode(!isCodeOpen)}></CodeIcon>
         {props.children}
       </div>
       {isCodeOpen && 
-        <Highlight language="jsx" className={classes.code}>
+        <Highlight language="jsx" style={{padding: '16px', fontSize: '14px'}}>
             {stringChildren}
         </Highlight>} 
     </section>
