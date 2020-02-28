@@ -30,7 +30,7 @@ const FlexWrap = (props) => {
         <CodeIcon style={styles.code} fontSize="small" onClick={() => setCode(!isCodeOpen)}></CodeIcon>
         {props.children}
       </div>
-      {isCodeOpen && <Stringify jsx={children} displayName={'Button'} singleLineProps={true}/>} 
+      {isCodeOpen && <Stringify jsx={children} displayName={props.displayName} singleLineProps={props.singleLineProps}/>} 
     </section>
   )
 }
